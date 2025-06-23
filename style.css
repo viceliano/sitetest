@@ -1,26 +1,53 @@
-* {
-  box-sizing: border-box;
-}
-
+/* Fundo estrelado animado */
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #1a1a1a, #121212);
+  background: black;
+  overflow: hidden;
+  height: 100vh;
+  font-family: Arial, sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
 }
 
-.container {
-  background-color: #1f1f1f;
+.stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(white 1px, transparent 1px),
+              radial-gradient(white 1px, transparent 1px);
+  background-size: 10px 10px;
+  background-position: 0 0, 5px 5px;
+  animation: starScroll 120s linear infinite;
+  z-index: 0;
+  opacity: 0.2;
+}
+
+@keyframes starScroll {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(-500px, -500px); }
+}
+
+/* Login box */
+.login-box {
+  position: relative;
+  z-index: 1;
+  background: rgba(20, 20, 20, 0.85);
+  border: 3px solid white;
+  border-radius: 15px;
   padding: 30px;
-  border-radius: 10px;
-  width: 90%;
-  max-width: 400px;
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
-  text-align: center;
+  width: 300px;
+  box-shadow: 0 0 20px white;
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Borda animada (pulsando) */
+@keyframes float {
+  0%, 100% { transform: translateY(-5px); box-shadow: 0 0 10px white; }
+  50% { transform: translateY(5px); box-shadow: 0 0 20px white; }
 }
 
 input, button {
@@ -38,51 +65,8 @@ input {
 }
 
 button {
-  background-color: #00ffff;
+  background-color: white;
   color: black;
   font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
-}
-
-button:hover {
-  background-color: #00cccc;
-}
-
-.mensagem-erro {
-  color: red;
-  font-size: 0.9em;
-  height: 1em;
-}
-
-.background-animation {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: repeating-linear-gradient(
-    0deg,
-    #00ff99 0px,
-    #00ff99 2px,
-    transparent 2px,
-    transparent 4px
-  );
-  animation: scroll 10s linear infinite;
-  opacity: 0.08;
-  z-index: 0;
-}
-
-@keyframes scroll {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: 0 100%;
-  }
-}
-
-.container {
-  position: relative;
-  z-index: 1; /* pra ficar acima da animação */
 }
